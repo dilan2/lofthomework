@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    var mas = ['я', 'умею', 'писать', 'рекурсивные', 'функции'];
+    var counter = 0;
+
+    function consoleRec(arr, counter) {
+        if (arr[counter] != undefined) {
+            console.log(arr[counter]);
+            counter++;
+            consoleRec(arr, counter);
+        }
+    }
+
+    consoleRec(mas, counter);
+
+</script>
+</body>
+</html>
