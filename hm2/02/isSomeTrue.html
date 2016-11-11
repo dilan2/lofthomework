@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    var arr = [0, 1, 0];
+
+    function filterFn(a) {
+        if(Boolean(a)) {
+            return true
+        } else {
+            return false
+        }
+    }
+
+
+    function test(arr) {
+        if(arr.length == 0) {
+            throw new Error('Пустой массив');
+        }
+
+    }
+
+
+    function isSomeTrue(source, filterFn) {
+        for(var i = 0; i < source.length; i++) {
+            if(filterFn(source[i])) {
+                return true
+            } else {
+                continue
+            }
+        }
+        return false
+    }
+
+
+    console.log(isSomeTrue(arr, filterFn));
+
+
+</script>
+</body>
+</html>
