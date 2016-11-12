@@ -18,9 +18,11 @@ function func(arg) {
 
 function filter(array, func2) {
     var mas =[];
+    var k =0;
     for(var i = 0; i < array.length; i++) {
         if( func2(array[i]) ) {
-            mas.push(array[i]);
+            mas[k] = array[i];
+            k++;
         }
     }
     return mas;
@@ -33,8 +35,10 @@ function filter(array, func2) {
 
 function map(array, func3) {
     var mas = [];
+    var k = 0;
     for(var i = 0; i < array.length; i++) {
-        mas.push( func3(array[i]) );
+        mas[k] = func3(array[i]);
+        k++;
     }
     return mas;
 }
@@ -46,8 +50,10 @@ function map(array, func3) {
 
 function slice(array, a, b) {
     var mas = [];
+    var k = 0;
     for(var i = a; i < b-1; i++) {
-        mas.push(array[i]);
+        mas[k] = array[i];
+        k++;
     }
     return mas;
 
@@ -80,27 +86,29 @@ function func4(a,b) {
 
 function splice() {
     var mas =[];
+    var a = 0;
     for(var k = 0; k < arguments[1]; k++) {
-        mas.push(array[k]);
+        mas[a] = array[k];
+        a++;
     }
     for (var i = arguments[1]; i < arguments[0].length; i++) {
-        if (i <= (arguments[1] + arguments[2])-1  ) {
-            // continue;
-            if(i == (arguments[1] + arguments[2])-1) {
+        if (arguments[2] == 0 || i <= (arguments[1] + arguments[2])-1) {
+            if(arguments[2] == 0 || i == (arguments[1] + arguments[2])-1) {
                 for (var j = 3; j < arguments.length; j++) {
-                    mas.push(arguments[j]);
+                    mas[a] = arguments[j];
+                    a++;
                 }
             }
         } else {
-            mas.push(arguments[0][i]);
+            mas[a] = arguments[0][i];
+            a++;
         }
-
     }
     return mas;
 }
 
-console.log(splice(array, 2, 2,'Первое', 'Второе', 'Третье'));
-
+// console.log(splice(array, 2, 2,'Первое', 'Второе', 'Третье', 'four'));
+// массив / номер / количество  / вставить
 
 
 
