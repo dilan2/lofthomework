@@ -51,15 +51,18 @@ function map(array, func3) {
 function slice(array, a, b) {
     var mas = [];
     var k = 0;
-    for(var i = a; i < b-1; i++) {
+    if(!a && !b) { mas = array; return mas;}
+    if(!b) {b = array.length;}
+    if(a < 0) {a = array.length+a; }
+    if(b < 0) {b = array.length+b; }
+    for(var i = a; i < b; i++) {
         mas[k] = array[i];
         k++;
     }
     return mas;
-
 }
 
-// console.log(slice(array, 2, 5));
+console.log(slice(array, -4, -1));
 
 
 // reduce
@@ -71,7 +74,6 @@ function reduce(array, func4, arg) {
         arg = temp;
     }
     return temp;
-
 }
 
 
