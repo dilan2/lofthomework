@@ -1,4 +1,4 @@
-let array = [1, 2, 3, 4, 5, 6];
+let array = [1, 2, 3, 4, 5];
 
 // forEach
 function forEach(array, func) {
@@ -62,13 +62,16 @@ function slice(array, a, b) {
     return mas;
 }
 
-console.log(slice(array, -4, -1));
+// console.log(slice(array, -4, -1));
 
 
 // reduce
 
 function reduce(array, func4, arg) {
     var temp;
+    if(!arg) {
+        arg = 0;
+    }
     for(var i = 0; i < array.length; i++) {
         temp = func4(array[i], arg);
         arg = temp;
@@ -81,7 +84,7 @@ function func4(a,b) {
     return a + b;
 }
 
-// console.log(reduce(array, func4, 0));
+console.log(reduce(array, func4));
 
 
 // splice
