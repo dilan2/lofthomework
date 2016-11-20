@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <button id="bu">Создать DIV</button>
+
+    <script>
+
+        var bu = document.getElementById('bu');
+
+        bu.addEventListener('click', clickhandler);
+
+        function clickhandler(e) {
+            var body = document.getElementsByTagName('body')[0];
+            var div = document.createElement('div');
+            body.appendChild(div);
+            div.style.width = '100px';
+            div.style.height = '100px';
+            div.style.backgroundColor = 'red';
+            div.addEventListener('mousedown', mousedownhandler);
+        }
+
+          function mousedownhandler(e) {
+           e.target.style.position = 'absolute';
+
+
+           document.body.appendChild(e.target);
+           e.target.style.zIndex = 1000;
+
+
+           var coords = getCoords(e.target);
+
+           var shiftX = e.pageX - coords.left;
+           console.log(shiftX);
+           var shiftY = e.pageY - coords.top;
+           console.log(shiftY);
+           moveAt(e);
+           function moveAt(e) {
+               e.target.style.left = e.pageX - shiftX + 'px';
+               e.target.style.top = e.pageY - shiftY + 'px';
+           }
+
+           document.addEventListener('mousemove', mousemovehandler);
+           
+           function mousemovehandler(e) {
+               moveAt(e);
+           }
+
+
+           e.target.addEventListener('mouseup', mouseuphandler);
+
+           function mouseuphandler() {
+               document.removeEventListener('mousemove', mousemovehandler);
+               e.target.removeEventListener('mouseup', mouseuphandler);
+           }
+
+           function getCoords(elem) { // кроме IE8-
+               var box = elem.getBoundingClientRect();
+
+               return {
+                   top: box.top + pageYOffset,
+                   left: box.left + pageXOffset
+               };
+
+           }
+
+       }
+
+
+    </script>
+</body>
+</html>
