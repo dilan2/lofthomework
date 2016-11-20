@@ -1,0 +1,82 @@
+@import url(https://fonts.googleapis.com/css?family=Fira+Sans:500,300&subset=latin,cyrillic);
+
+body{
+    font-family: 'Fira Sans', sans-serif;
+    font-weight: 300;
+    color: #4f4f4f;
+}
+
+a{
+    text-decoration:none;
+    color: #4f4f4f;
+    outline:none;
+    -webkit-transition:  color 0.5s ease-in-out;
+    -moz-transition:  color 0.5s ease-in-out;
+    -o-transition:  color 0.5s ease-in-out;
+    -ms-transition:  color 0.5s ease-in-out;
+    transition:  color 0.5s ease-in-out;
+}
+a:hover{
+    opacity: 0.8;
+}
+
+.content{
+    width: 460px;
+    margin: 0 auto;
+    padding: 100px 0 0 0;
+}
+.logo{
+    text-align: center;
+}
+
+
+/*    design akkordeon      */
+
+#accordion{
+    margin: 25px 0 0;
+    list-style: none;
+    padding: 0;
+}
+#accordion>li{
+    background-color: #e7e7e7;
+    border-radius: 20px;
+    margin-top: 5px;
+}
+#accordion>li>a{
+    height: 42px;
+    background-color: #ff8663;
+    display: block;
+    border-radius: 20px;
+    line-height: 42px;
+    padding: 0 20px;
+    overflow: hidden;
+    font-weight: 500;
+
+}
+#accordion>li:nth-child(odd)>a{
+    background-color: #696666;
+    color: #fff;
+}
+#accordion>li:nth-child(even)>a{
+    background-color: #f1f1f1;
+}
+#accordion>li.active>a{
+    background-color: #ff8663;
+}
+#accordion>li>ul{
+    margin:  0;
+    list-style: none;
+    padding: 5px 0;
+    display: none;
+}
+#accordion>li.active>ul{
+    display: block;
+}
+#accordion>li>ul>li{
+
+}
+#accordion>li>ul>li>a{
+    line-height: 27px;
+    padding: 0 20px;
+}
+/*    end design akkordeon      */
