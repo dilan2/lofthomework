@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" media="all" href="css/style.css">
+    <link rel="stylesheet" media="all" href="css/reset.css">
+    <link rel="stylesheet" href="https://code.cdn.mozilla.net/fonts/fira.css">
+    <meta charset="utf-8">
+</head>
+<body>
+
+<div class="content">
+    <div class="logo">
+        <img src="img/logo.png" alt="тестовый аккордеон">
+    </div>
+    <div id="main">
+        <ul id="accordion">
+            <li class="active">
+                <a href="#">Основы языка и как на нем говорить правильно</a>
+                <ul>
+                    <li><a href="#">Лексическая структура</a></li>
+                    <li><a href="#">Типы данных, значения и переменные</a></li>
+                    <li><a href="#">Выражения и операторы инструкции</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#">Функции</a>
+                <ul>
+                    <li><a href="#">Лексическая структура</a></li>
+                    <li><a href="#">Типы данных, значения и переменные</a></li>
+                    <li><a href="#">Выражения и операторы инструкции</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#">Обработка ошибок и отладка</a>
+                <ul>
+                    <li><a href="#">Лексическая структура</a></li>
+                    <li><a href="#">Типы данных, значения и переменные</a></li>
+                    <li><a href="#">Выражения и операторы инструкции</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#">Объекты и массивы</a>
+                <ul>
+                    <li><a href="#">Лексическая структура</a></li>
+                    <li><a href="#">Типы данных, значения и переменные</a></li>
+                    <li><a href="#">Выражения и операторы инструкции</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#">События</a>
+                <ul>
+                    <li><a href="#">Лексическая структура</a></li>
+                    <li><a href="#">Типы данных, значения и переменные</a></li>
+                    <li><a href="#">Выражения и операторы инструкции</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</div>
+</body>
+
+<script>
+//    var accordionChildren = [];
+//    var accordion = {
+//
+//        start: function() {
+//            var ul = document.getElementById("accordion");
+//            var masLi = ul.children;
+//            for ( var i = 0; i < masLi.length; i++ ) {
+//                accordionChildren.push( masLi[i] );
+//                accordionChildren[i].className = 'accordionChild';
+//            }
+//            for ( var j = 0; j < accordionChildren.length; j++ ) {
+//                var title = accordion.getChild( accordionChildren[j], 'A' );
+//                title.onclick = accordion.open;
+//            }
+//        },
+//        open: function() {
+//            var itemClass = this.parentNode.className;
+//
+//            for ( var i = 0; i < accordionChildren.length; i++ ) {
+//                accordionChildren[i].className = 'accordionChild';
+//            }
+//
+//            if ( itemClass == 'accordionChild' ) {
+//                this.parentNode.className = 'accordionChild active';
+//
+//            }
+//        },
+//        getChild: function( element, tagName ) {
+//            for ( var i = 0; i < element.childNodes.length; i++ ) {
+//                if ( element.childNodes[i].nodeName == tagName)  return element.childNodes[i];
+//            }
+//        }
+//    };
+//
+//    accordion.start();
+
+(function () {
+    var accordion = document.getElementById('accordion');
+    accordion.addEventListener('click', accordionHandler);
+
+    function accordionHandler(e) {
+        e.preventDefault();
+        if(e.target.tagName == 'A') {
+            var sisters = e.target.parentNode.parentNode.children;
+            for(var each of sisters) {
+                each.classList.remove('active');
+            }
+            var temp = e.target.parentNode;
+            temp.classList.toggle('active');
+        }
+    }
+})();
+
+
+
+
+</script>
+</html>
