@@ -34,15 +34,17 @@ Cookie.update();
 function getCoockies() {
     var x = document.cookie;
     window.list.innerHTML = '';
-    var parts = x.split('; ');
-    var cks = [];
-    for(var i = 0; i < parts.length; i++) {
-        var temp = {};
-        temp.name = parts[i].split('=')[0];
-        temp.val = parts[i].split('=')[1];
-        cks.push(temp);
+    if(x) {
+        var parts = x.split('; ');
+        var cks = [];
+        for (var i = 0; i < parts.length; i++) {
+            var temp = {};
+            temp.name = parts[i].split('=')[0];
+            temp.val = parts[i].split('=')[1];
+            cks.push(temp);
+        }
+        createTable(cks);
     }
-    createTable(cks);
 }
 
 
