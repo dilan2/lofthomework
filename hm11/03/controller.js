@@ -16,6 +16,8 @@ var Controller = {
     },
     groupsRoute: function() {
         return Model.getGroups().then(function(groups) {
+            var mod = groups.splice(0,1);
+            console.log(groups);
             results.innerHTML = View.render('groups', {list: groups});
         });
     },
