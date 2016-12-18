@@ -124,21 +124,21 @@
                 </div>
             </div>
             <div class="comments-all">
+                {{#if comments.count}}
+                {{#each commentsContent.profiles}}
                 <div class="comments">
-                    {{#if comments.count}}
-                    {{#each commentsContent.profiles}}
+
                     <div class="author">
                         <img src="{{photo_medium_rec}}"  class="img-circle size">
-                        <p>{{first_name}}</p>
+                        <p>{{first_name}} {{last_name}}</p>
                     </div>
                     <div class="commentsContent">
-                        <p>{{screen_name}}</p>
+                        <p>{{text}}</p>
                     </div>
-                    {{/each}}
+                    </div>
+                {{/each}}
                     {{else}}
                     <div class="author">
-                        <img src=""  class="img-circle size">
-                        <p></p>
                     </div>
                     <div class="commentsContent">
                         <p>Комментариев пока нет</p>
@@ -178,6 +178,7 @@
 
     .pic {
         display: inline-block;
+        margin-right: 15px;
     }
 
 
@@ -205,7 +206,7 @@
     }
     .comments-all {
         display: inline-block;
-        /*border:1px solid lightgrey;*/
+        border:1px solid lightgrey;
         vertical-align: top;
         width: calc(100% - 300px);
         font-size: 12px;
@@ -215,12 +216,15 @@
 
     .comments {
         display: inline-block;
-        /*border:1px solid lightgrey;*/
+        border-bottom:1px solid lightgrey;
         vertical-align: top;
     }
 
     .author {
         display: inline-block;
+        /*margin-right:15px;*/
+        /*margin-top: 10px;*/
+        margin: 10px 15px;
     }
 
     .author p{
@@ -234,10 +238,11 @@
 
     .commentsContent {
         display: inline-block;
-        /*vertical-align: middle;*/
-        width: calc(100% - 130px);
+        vertical-align: top;
+        width: calc(100% - 170px);
         /*margin-top: 50%;*/
-        transform: translateY(-50%);
+        /*transform: translateY(-50%);*/
+        margin-top: 10px;
     }
 
     .commentsContent p {
