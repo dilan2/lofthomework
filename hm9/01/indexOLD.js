@@ -10,14 +10,14 @@ var friendsAll = [];
 var friendsList = [];
 save.addEventListener('click', saveBu);
 
-// if(localStorage.mylist) {
-//     friendsList = JSON.parse(localStorage.mylist);
-// }
+if(localStorage.length) {
+    friendsList = JSON.parse(localStorage.mylist);
+}
 
 function searchFromAPI() {
     new Promise(function(resolve, reject) {
         VK.init({
-            apiId: 5773525
+            apiId: 5759290
         });
 
         VK.Auth.login(function(response) {
@@ -28,34 +28,20 @@ function searchFromAPI() {
             }
         }, 2);
     }).then(function () {
-        VK.Api.call('friends.get', {fields: 'photo_50, screen_name, bdate'}, function(result) {
-            if(result.error) {
-                // reject(new Error(result.error.error_msg));
-                console.log('Ошибка!');
-            } else {
-                friendsAll = result.response;
-                if(localStorage.mylist) {
-                    var fromLS = JSON.parse(localStorage.mylist);
-
-                    for (var i = 0; i < friendsAll.length; i++) {
-                        for (var k = 0; k < fromLS.length; k++) {
-                            if (friendsAll[i].uid == fromLS[k]) {
-                                friendsList.push(friendsAll[i]);
-                            }
-                        }
-                    }
-                }
-                getFriends();
-                getList();
-            }
-    })
-}).catch(function(e) {
+        getFriends();
+    }).catch(function(e) {
         console.log('Ошибка: ' + e.message);
     })
 }
 
 function getFriends() {
     return new Promise(function (resolve, reject) {
+        VK.Api.call('friends.get', {fields: 'photo_50, screen_name, bdate'}, function(result) {
+            if(result.error) {
+                reject(new Error(result.error.error_msg));
+            } else {
+                getList();
+                friendsAll = result.response;
                 for(var k = 0; k < friendsAll.length; k++) {
                     for(var j = 0; j < friendsList.length; j++) {
                         if(friendsAll[k].uid == friendsList[j].uid) {
@@ -87,10 +73,10 @@ function getFriends() {
                     list.innerHTML = template;
                     resolve();
                 }
-            })
-        }
-//     })
-// }
+            }
+        })
+    })
+}
 
 
 function getList() {
@@ -172,11 +158,7 @@ function delet(e) {
 
 function saveBu(e) {
     e.preventDefault();
-    var ls = [];
-    for(var i = 0; i < friendsList.length; i++) {
-        ls.push(friendsList[i].uid);
-    }
-    localStorage.setItem('mylist', JSON.stringify(ls));
+    localStorage.setItem('mylist', JSON.stringify(friendsList));
 }
 
 
@@ -184,8 +166,8 @@ function saveBu(e) {
 function dragStart(e) {
     if(e.target.className == 'friends-div') {
         console.dir(e.target);
-        e.dataTransfer.setData("uid", e.target.firstElementChild.dataset.id);
-        return true;
+    e.dataTransfer.setData("uid", e.target.firstElementChild.dataset.id);
+    return true;
     }
 }
 
@@ -225,7 +207,7 @@ function dragDropR(e) {
         getFriends();
         getList();
     }
-};
+}
 
 var leftList = document.getElementsByClassName('left-content')[0];
 leftList.addEventListener('dragstart', dragStart);
