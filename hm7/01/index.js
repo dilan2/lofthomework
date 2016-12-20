@@ -49,20 +49,20 @@ function getCoockies() {
 
 
 function createTable(arr) {
-    // console.log(arr);
+    console.log(arr);
     var table = document.createElement('table');
 
     for (var i = 0; i < arr.length; i++) {
         var tr = document.createElement('tr');
         for(var key in arr[i]) {
-            // console.dir(arr[i][key]);
+            console.dir(arr[i][key]);
             var td = document.createElement('td');
             td.innerHTML = arr[i][key];
             tr.appendChild(td);
         }
         var bu = document.createElement('button');
         tr.appendChild(bu);
-        bu.setAttribute('onclick', 'del(this.parentNode.children[0].textContent)');
+        bu.setAttribute('data-cookie', arr[i].name);
         bu.textContent = 'Удалить';
         table.appendChild(tr);
     }
@@ -79,10 +79,17 @@ function del(arg) {
 }
 
 
-
-
-
 function deleteCookie(name) {
     Cookie.set(name, "", "/", -1);
     getCoockies();
 }
+
+
+document.addEventListener('click', function(e) {
+    if(e.target.tagName == 'BUTTON' && e.target.dataset.cookie ) {
+        // console.log(e.target.dataset);
+        del(e.target.dataset.cookie);
+    }
+})
+
+getCoockies();
