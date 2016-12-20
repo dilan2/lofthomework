@@ -1,0 +1,137 @@
+* {
+    margin: 0;
+    padding:0;
+}
+
+body {
+    background-color: #999999;
+}
+
+.wrap {
+    display: inline-block;
+    margin: 100px 0 0 350px;
+    font-size: 0;
+    padding-bottom: 10000px;
+}
+.choose {
+    background-color: #ff9966;
+    font-size: 16px;
+    color: #fff;
+    border-radius: 10px 10px 0 0;
+}
+
+.choose p {
+    padding: 10px;
+}
+
+.content > div {
+    display: inline-block;
+    font-size: 16px;
+}
+.content input {
+    padding-right: 200px;
+    margin: 10px 10px;
+    border-radius: 10px;
+}
+
+.search {
+    background-color: #f3f3f3;
+}
+
+.list {
+    background-color: #fff;
+    padding-top: 10px;
+
+
+}
+
+.left-list {
+    margin-right:1px;
+}
+
+/*.headline {*/
+    /*padding-bottom:10px;*/
+/*}*/
+
+.headline > p {
+    margin:0 10px;
+    border-bottom: 1px solid grey;
+    padding-bottom:10px;
+}
+
+.items {
+    height:400px;
+    overflow: auto;
+}
+
+.friends-ul {
+    font-size: 0;
+}
+
+.friends-li {
+    display: block;
+}
+
+.friends-div:hover {
+    background-color: #999999;
+}
+
+.friends-div {
+    display: block;
+    /*text-align: center;*/
+    line-height: 30px;
+    margin: 10px;
+    border-bottom: 1px solid grey;
+    padding-bottom:5px;
+    position: relative;
+
+}
+
+.friends-div img {
+    width:30px;
+    height:30px;
+    display: inline-block;
+    border-radius: 50%;
+    vertical-align:middle;
+}
+
+.friends-div a {
+    display: inline-block;
+    font-size:16px;
+    text-decoration: none;
+    vertical-align:middle;
+    /*margin-right: 10px;*/
+    /*right:0;*/
+    position: absolute;
+    right:0;
+}
+
+.friends-div p {
+    display: inline-block;
+    font-size:12px;
+    vertical-align:middle;
+    margin-left: 10px;
+
+
+}
+
+
+
+.save {
+    background-color: #f3f3f3;
+    display: block;
+    text-align: right;
+    border-radius: 0 0 10px 10px;
+}
+#save {
+    font-size: 16px;
+    text-decoration: none;
+    padding:5px 10px;
+    display: inline-block;
+    background-color: #fd9a7a;
+    border-radius: 10px;
+    margin:10px 10px;
+
+
+
+}
